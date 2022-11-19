@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Personal Expense Tracker</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--link rel="stylesheet" href="css/login.css"-->
+        <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+         <script>
+		        if(window.history.replaceState){
+		            window.history.replaceState(null,null,window.location.href);
+		        }
+    	</script>
+    </head>
+    <body>
+        <div class="page">
+             <div class="nav">
+                <nav>
+                    <div class="title">
+                        Personal Expense Tracker
+                    </div>
+                    <ul class="right">
+                        <li><a href="/registration" class="btn-signup">Sign Up</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="main">
+                <div class="box">
+                  
+                    <div class="some">
+                        <h2 style="color: blue;">Login</h2>
+                    </div>
+                    <div style="color:yellow">{{ pred }}</div>
+                    <div class="form">
+    					<form action="{{url_for('loginpage')}}" method="post">
+    						<input type="text" name="user" placeholder="Enter Email ID" required="required" style="color:blue" />
+    						<input type="password" name="passw" placeholder="Enter Password" required="required" style="color:black" />
+    						<button type="submit" class="btn btn-primary btn-block btn-large">Login</button>
+    					</form>
+                    </div>
+                </div>
+            </div>
+      </div>
+   </body>
+</html>

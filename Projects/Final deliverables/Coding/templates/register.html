@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Personal Expense Tracker</title>
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+</head>
+
+<body>
+<div class="page">
+		<div class="nav">
+        <nav>
+            <div class="title">
+                Personal Expense Tracker
+            </div>
+            <ul class="right">
+                <li><a href="/" class="btn-signup">Home</a></li>
+                <li><a href="/login" class="btn-signup">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+	 <div class="main">
+      <div class="box">
+      	
+          <div class="some">
+              <h2 style="color: blue;">Register</h2>
+          </div>
+          	<div class="form">
+							 <!-- Main Input For Receiving Query to our ML -->
+							<form action="{{ url_for('register')}}"method="post">
+								<input type="text" name="name" placeholder="Enter Your Name" required="required" style="color:black" />
+								<input type="email" class="text" name="user" placeholder="Enter Email" required="required" style="color:black" />
+								<input type="text" name="phone" placeholder="Enter 10-digit mobile number" required="required" style="color:black" />
+								<input type="city" name="city" placeholder="Enter Your City Name" required="required" style="color:black" />
+								<input type="text" name="occupation" placeholder="Enter your occupation" style="color:black" />
+								<input type="password" name="passw" placeholder="Enter Password" required="required" style="color:black" /> 
+								<button type="submit" class="btn btn-primary btn-block btn-large">Register</button> 
+
+							</form>
+						</div>
+					 <br><br><br>
+					<div style="color:black">{{ pred }}</div>
+	 			
+	 		</div>
+	</div>
+</div>
+</body>
+</html>
+

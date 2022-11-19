@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <script>
+        if(window.history.replaceState){
+            window.history.replaceState(null,null,window.location.href);        }
+    </script>
+</head>
+<body>
+<div class="page">
+			<div class="nav">
+					<nav>
+						<div class="title">
+						   Update Wallet Balance
+					   </div>
+					   <ul class="right">
+						   <li><a href="/home" class="btn-signup">Home</a></li>
+						   <li><a href="/login" class="btn-signup">Login</a></li>
+						   <li><a href="/expense" class="btn-signup">Add Expense</a></li>
+					   </ul>
+				   </nav>
+			</div>
+		   <div class="main">
+             <div class="box">
+                <div class="some">
+					<h2 style="color: blue;">Add Amount</h2>
+                </div>
+                <div class="form">
+					<form action="{{url_for('addmoneypage')}}" method="POST">
+						<h4 style="color: blue;">Email *</h4>
+						<input type="email" name="user" placeholder="Enter email id" required>
+						<h4 style="color: blue;">Amount *</h4>
+						<input type="text" name="amount" placeholder="Enter amount to be added" required>
+						<button type="submit" class="btn btn-primary btn-block btn-large">UPDATE</button>
+						<a href="/dashboard" class="btn btn-primary btn-block btn-large">Back</a>
+					</form>
+				</div>
+				<div style="color:yellow"><h3>{{ pred }}</h3></div>
+
+            </div>
+          </div>
+</div>
+    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

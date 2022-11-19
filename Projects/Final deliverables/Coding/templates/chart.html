@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Chart.js Example</title>
+<!-- import plugin script -->
+<!--script src='/static/Chart.min.js'></script-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    
+	<link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+	<script>
+            if(window.history.replaceState){
+                window.history.replaceState(null,null,window.location.href);
+            }
+    </script>
+</head>
+<body>
+<div class="page">
+		<div class="header">
+				<nav>
+					<div class="title">
+						Personal Expense Tracker
+					</div>
+					<ul class="right">
+						<li><a href="/login" class="btn-signup">Logout</a></li>
+						<li><a href="/dashboard" class="btn-signup">Dashboard</a></li>
+					</ul>
+				</nav>
+		 </div>
+
+
+		<!-- Line chart canvas element -->
+		<div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <canvas id="canvas" height=400 width=800></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--suppress JSUnresolvedLibraryURL -->
+
+<script>
+// Global parameters:
+// do not resize the chart canvas when its container does (keep at 600x400px)
+var expenseCanvas = document.getElementById("canvas").getContext("2d");
+Chart.defaults.global.responsive = false;
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+canvas.style.background = "#efe1f2";
+
+var dataFirst = {
+    label: "Home Expenses",
+    data: [{% for item in home_expenses %}
+				{{item}},
+		    {% endfor %}],
+    lineTension: 0,
+    fill: true,
+    borderColor: 'red'
+  };
+  
+var dataSecond = {
+    label: "Medical Expenses",
+    data: [{% for item in medical_expenses %}
+		     {{item}},
+		   {% endfor %}],
+    lineTension: 0,
+    fill: true,
+	borderColor: 'blue'
+  };
+
+var dataThird = {
+    label: "Vehicle Expenses",
+    data: [{% for item in vehicle_expenses %}
+				{{item}},
+			{% endfor %}],
+    lineTension: 0,
+    fill: true,
+	borderColor: 'green'
+  };
+
+/*var dataSecond = {
+    label: "Medical Expenses",
+    data: [200, 750, 600, 600, 560, 1000, 700],
+    lineTension: 0,
+    fill: false,
+	borderColor: 'blue',
+	backgroundColor: background_colors,
+    hoverBackgroundColor: hover_background_colors
+  };
+
+var dataThird = {
+    label: "Vehicle Expenses",
+    data: [400, 715, 860, 960, 650, 530, 200],
+    lineTension: 0,
+    fill: false,
+  borderColor: 'green'
+  };*/
+  
+// define the chart data
+var chartData = {
+		labels : 	[{% for item in labels %}
+					"{{item}}",
+					{% endfor %}],
+		datasets: [dataFirst, dataSecond, dataThird],
+			axisX:{
+			tickColor: "red",
+			tickLength: 5,
+			tickThickness: 2,
+			gridColor: "lightblue" ,
+			gridThickness: 2 ,
+			interlacedColor: "#F0F8FF"
+		  },
+		  axisY:{
+			tickLength: 15,
+			tickColor: "DarkSlateBlue" ,
+			tickThickness: 5,
+			 interval: 15,
+			gridColor: "lightgreen"
+		  },
+		};	
+ 
+// get chart canvas
+//var ctx = document.getElementById("canvas").getContext("2d");
+
+var chartOptions = {
+  legend: {
+    display: true,
+    position: 'top',
+    labels: {
+      boxWidth: 80,
+      fontColor: 'maroon'
+    }
+  }
+};
+ 
+// create the chart using the chart canvas
+var myChart = new Chart(expenseCanvas, {
+type: 'line',
+data: chartData,
+options: chartOptions
+});
+</script>
+</body>
+</html>

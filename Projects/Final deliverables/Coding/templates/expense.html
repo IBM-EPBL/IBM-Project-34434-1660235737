@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+
+    <script>
+        if(window.history.replaceState){
+            window.history.replaceState(null,null,window.location.href);
+        }
+    </script>
+</head>
+<body>
+ <div class="page">
+        <div class="nav">
+      		<nav>
+           		<div class="title">
+				   Update Personal Expenses
+			   </div>
+			   <ul class="right">
+				   <li><a href="/home" class="btn-signup">Home</a></li>
+				   <li><a href="/wallet" class="btn-signup">Wallet</a></li>
+				   <li><a href="/dashboard" class="btn-signup">Dashboard</a></li>
+			   </ul>
+		   </nav>
+        </div>
+
+		   <div class="main">
+             <div class="box">
+			  		
+						<div class="some">
+							 <h2 style="color: blue;">Add Expense</h2>
+						</div>
+						<div class="form">
+							<form action="{{url_for('expensepage')}}" method="POST">
+								<input type="email" name="user" placeholder="Enter email id" required>
+								<input type="date" name="expensedate" min="01/01/2018" max="01/01/2050" required>
+								<select name="expensetype" id="type" class="form-control" required>									
+										<option value="medical_expenses">Medical</option>
+										<option value="vehicle_expenses">Vehicle</option>
+										<option value="home_expenses">Home</option>									
+								  </select>
+								<input type="text" name="expenseamount" placeholder="Expense Amount paid" required>
+								<button type="submit" class="btn btn-primary btn-block btn-large">Add Expense</button>
+								<a href="/home" class="btn btn-primary btn-block btn-large">Back</a>
+				 			</form>
+				 	    </div>
+				 	    <div style="color:yellow">{{ pred }}</div>
+				  </div>
+				  
+		   </div>
+	    </div>
+</div>
+    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
